@@ -1,56 +1,56 @@
 # AudioNotes
 
-## 基于 FunASR 和 Qwen2 构建的音视频转结构化笔记系统
+## A Structured Note-Taking System for Audio and Video Based on FunASR and Qwen2
 
-能够快速提取音视频的内容，并且调用大模型进行整理，成为一份结构化的markdown笔记，方便快速阅读
+Quickly extracts content from audio and video files, and uses large language models to organize it into structured markdown notes for easy reading.
 
 FunASR: https://github.com/modelscope/FunASR
 
 Qwen2: https://ollama.com/library/qwen2
 
-## 效果展示
+## Demonstration
 
-### 音视频识别和整理
+### Audio/Video Recognition and Organization
 
 ![image](docs/1.jpg)
 
-### 与音视频内容对话
+### Conversation with Audio/Video Content
 
 ![image](docs/2.jpg)
 
-## 使用方法
+## Usage Instructions
 
-### ① 安装 Ollama
+### ① Install Ollama
 
-下载对应系统的 Ollama 安装包进行安装
+Download and install the Ollama package for your system
 
 https://ollama.com/download
 
-### ② 拉取模型
+### ② Pull the Model
 
-我以 `阿里的千问2 7b` 为例 https://ollama.com/library/qwen2
+Using `Alibaba's Qwen2 7b` as an example: https://ollama.com/library/qwen2
 
 ```bash
 ollama pull qwen2:7b
 ```
 
-### ③ 部署服务
+### ③ Deploy the Service
 
-有两种部署方式，一种是使用 Docker 部署，另一种是本地部署
+There are two deployment methods: Docker deployment or local deployment
 
-#### Docker部署（推荐）🐳
+#### Docker Deployment (Recommended) 🐳
 
 ```bash
 curl -fsSL https://github.com/harry0703/AudioNotes/raw/main/docker-compose.yml -o docker-compose.yml
 docker-compose up
 ```
-docker 启动后，访问 http://localhost:15433/
+After Docker starts, visit http://localhost:15433/
 
-> 登录账号为 admin，密码为 admin （可以在 docker-compose.yml 文件里面修改）
+> Login account is admin, password is admin (can be modified in the docker-compose.yml file)
 
-#### 本地部署 📦
+#### Local Deployment 📦
 
-需要有可访问的 postgresql 数据库
+Requires an accessible PostgreSQL database
 
 ```bash
 conda create -n AudioNotes python=3.10 -y
@@ -60,11 +60,11 @@ cd AudioNotes
 pip install -r requirements.txt
 ```
 
-将 `.env.example` 重命名为 `.env`，修改相关配置信息
+Rename `.env.example` to `.env` and modify the relevant configuration information
 
 ```bash
 chainlit run main.py
 ```
-服务启动后，访问 http://localhost:8000/
+After the service starts, visit http://localhost:8000/
 
-> 登录账号为 admin，密码为 admin （可以在 .env 文件里面修改）
+> Login account is admin, password is admin (can be modified in the .env file)
